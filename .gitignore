@@ -1,0 +1,5 @@
+*.ads
+*.adb
+*.ali
+*.o
+test
