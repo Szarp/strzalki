@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+<link href="bomby.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+
+var
+   zmienne=1; 
+   tablicazmiennych=[0,1,2,3,4,5,]
+   aa='nazwa'
+   function cykl(x){
+  var y=x+2;
+  var z="cykl("+y+")";
+  setTimeout( z ,100);
+    {
+	//bomby();
+	bomby2();} 
+
+}
+
+ function start(){
+  Last=new Date();
+  var z="cykl(0)";
+  setTimeout(z,50);
+ }
+ 
+ function bomby(){
+ zmienne=zmienne+10
+ var d = document.getElementById('nazwa');
+
+if (zmienne>0){zmienne=zmienne+10}
+if (zmienne>100){zmienne=zmienne-10}
+d.style.top=zmienne+"px";
+ }
+ function bomby2 (nrid){
+	zmenne=zmienne+10
+	var  d = document.getElementById(aa);
+	if (zmienne>0){zmienne=zmienne+10}
+	if (zmienne>100){zmienne=zmienne-10}
+		
+			
+	
+		
+		d.style.top=zmienne+"px";
+		d.style.left=xxk[nrid]+"px";
+	}
+
+</script>
+</head>
+
+<body >
+
+<div><id="nazwa" style="left:0px;top:400px;" ><img  src="owoc.png"></div> 
+   
+	  
+<script>
+window.onload = start(0);
+</script>
+
+</body>

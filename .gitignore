@@ -2,4 +2,6 @@
 *.adb
 *.ali
 *.o
+*.sbm
+*.db
 test
