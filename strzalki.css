@@ -1,3 +1,8 @@
+.studnia td div{
+width:25px;
+height:25px;
+background:white;
+}
 .glob div{
   position:absolute;
   height:62px;
