@@ -25,10 +25,11 @@ var
    katx=0;
    katwysokosc=0;
    katszerokosc=0;
-   y=5;
-   y1=5;
-   x1=1;
-   x=1;
+   y=1;
+   y1=1;
+   x1=5;
+   x=5;
+  // klocek={x:[0,1,0];y:[0,0,1];l:3; x:1;y:2;l:3;};
   //tablicastrzalek=['strzlkagora','strzlkadol','strzlkaprawo','strzlkalewo];
   function cykl(x){
       var y=x+2;
@@ -38,7 +39,7 @@ var
   function start(){
       Last=new Date();
        var z="cykl(0)";
-        setTimeout(z,50); 
+        setTimeout(z,50);
        var element = document.getElementById( "strzalkagora" );
         element.addEventListener("click",fstrzalkagora);
        var element = document.getElementById( "strzalkadol" );
@@ -91,14 +92,14 @@ var
     }
  function zgas(x,y){
       var d = document.getElementById(mojeid(x,y));
-       d.style.background="black"
+       d.style.background="white"
     }
  function zapal(x,y){
       var d = document.getElementById(mojeid(x,y));
-        d.style.background="white"
+        d.style.background="black"
     }
  function mojeid(x,y){
-     return "id"+x+"_"+y;
+     return "id"+x+"_"+y; "id"+(x+1)+"_"+y;
     }
  function spadanie(x,y){
       x+=1;
@@ -108,42 +109,48 @@ var
       //alert ("tak")
        if (e.keyCode == 38) {//góra
           katx += 0.05;
-		  uaktualnijpozycje();       
-        }
-	   else if (e.keyCode == 87){
-	         zapal(y1,x1)
-           if(y>1){y-=1;
-	          zgas(y,x);
-			  y1=y;
-			  x1=x;
+		  uaktualnijpozycje();
+        }	   else if (e.keyCode == 65){//A
+		   if(x>1){
+		     zgas(y1,x1);
+		     zapal(x1,y1)
+			 y1=y;
+			 x1=x;
+			 x-=1;
+	         zapal(y,x);
+		   }  else  {
+		     return false;
+		   }
+	    }
+	   else if (e.keyCode == 68){//D
+		   if (x<10){
+		     zgas(y1,x1);
+		     zapal(x1,y1)
+			 y1=y;
+			 x1=x;
+			 x+=1;
+	         zapal(y,x);
 	        }
 	      else {return false;}
-	    }
-	   else if (e.keyCode == 65){
-	       zapal(y1,x1)
-		   if(x>1){x-=1;
-	         zgas(y,x);
-     		  y1=y;
-              x1=x;
-		    }
-	      else {return false;}
-	    }    
-	
-	   else if (e.keyCode == 68){
-	       zapal(y1,x1)
-		   if (x<5){x+=1;
-	          zgas(y,x);
-			  y1=y;
-              x1=x;
-	        }
-	      else {return false;}
-	    }
-	   else if (e.keyCode == 83){
-	       zapal(y1,x1)
-		   if(y<5){y+=1;
-	         zgas(y,x);
+	    }	   else if (e.keyCode == 87){//W
+           if(y>1){
+	         zgas(y1,x1);
+			 zapal(y,x)
 			 y1=y;
              x1=x;
+			 y-=1;
+			 zapal(y,x);
+	        }
+	      else {return false;}
+	    }
+	   else if (e.keyCode == 83){//S
+		   if(y<20){
+	         zgas(y1,x1);
+			 zapal(y,x)
+			 y1=y;
+             x1=x;
+			 y+=1;
+			 zapal(y,x);
 		    }
 	       else {return false;}
 	    }
@@ -164,7 +171,7 @@ var
 	   if (szerokoscokrag==-promienokrag){
 	     cwiartka=0;
 	     zmiennaokrag=80;
-	     numercwiartki();  
+	     numercwiartki();
 	    }
 	   else if (szerokoscokrag==zmiennaokrag){
 	     cwiartka+=1;
@@ -172,7 +179,7 @@ var
 	    }
        else{
 	      numercwiartki();
-        }  
+        }
     }
 //function wypiszx(){
 //var wynik= 	document.getElementById("wynik");
@@ -197,7 +204,7 @@ var
 	        d.style.top=(-wysokoscokrag+pozycjayokrag)+"px";
 	        d.style.left=(szerokoscokrag+pozycjaxokrag)+"px";
 	    }
-    }  
+    }
 
 </script>
 </head>
@@ -223,6 +230,21 @@ var
       <td>
 	  <div id="id1_5"></div>
          </td>
+		       <td>
+	  <div id="id1_6" ></div>
+        </td>
+      <td>
+	  <div id="id1_7"></div>
+        </td>
+      <td>
+	  <div id="id1_8" ></div>
+        </td>
+      <td>
+	  <div id="id1_9" ></div>
+        </td>
+      <td>
+	  <div id="id1_10"></div>
+         </td>
     </tr>
 	<tr>
       <td>
@@ -240,8 +262,23 @@ var
       <td>
 	  <div id="id2_5"></div>
          </td>
+		 <td>
+	  <div id="id2_6" ></div>
+        </td>
+      <td>
+	  <div id="id2_7"></div>
+        </td>
+      <td>
+	  <div id="id2_8" ></div>
+        </td>
+      <td>
+	  <div id="id2_9" ></div>
+        </td>
+      <td>
+	  <div id="id2_10"></div>
+         </td>
     </tr>
-	<tr>
+	  <tr>
       <td>
 	  <div id="id3_1" ></div>
         </td>
@@ -256,6 +293,21 @@ var
         </td>
       <td>
 	  <div id="id3_5"></div>
+         </td>
+		       <td>
+	  <div id="id3_6" ></div>
+        </td>
+      <td>
+	  <div id="id3_7"></div>
+        </td>
+      <td>
+	  <div id="id3_8" ></div>
+        </td>
+      <td>
+	  <div id="id3_9" ></div>
+        </td>
+      <td>
+	  <div id="id3_10"></div>
          </td>
     </tr>
 	<tr>
@@ -274,25 +326,527 @@ var
       <td>
 	  <div id="id4_5"></div>
          </td>
+		 <td>
+	  <div id="id4_6" ></div>
+        </td>
+      <td>
+	  <div id="id4_7"></div>
+        </td>
+      <td>
+	  <div id="id4_8" ></div>
+        </td>
+      <td>
+	  <div id="id4_9" ></div>
+        </td>
+      <td>
+	  <div id="id4_10"></div>
+         </td>
+    </tr>  <tr>
+      <td>
+	  <div id="id5_1" ></div>
+        </td>
+      <td>
+	  <div id="id5_2"></div>
+        </td>
+      <td>
+	  <div id="id5_3" ></div>
+        </td>
+      <td>
+	  <div id="id5_4" ></div>
+        </td>
+      <td>
+	  <div id="id5_5"></div>
+         </td>
+		       <td>
+	  <div id="id5_6" ></div>
+        </td>
+      <td>
+	  <div id="id5_7"></div>
+        </td>
+      <td>
+	  <div id="id5_8" ></div>
+        </td>
+      <td>
+	  <div id="id5_9" ></div>
+        </td>
+      <td>
+	  <div id="id5_10"></div>
+         </td>
     </tr>
 	<tr>
       <td>
-	     <div id="id5_1" ></div>
-      </td>
+	  <div id="id6_1" ></div>
+        </td>
       <td>
-	     <div id="id5_2"></div>
-      </td>
+	  <div id="id6_2"></div>
+        </td>
       <td>
-	     <div id="id5_3" ></div>
-      </td>
+	  <div id="id6_3" ></div>
+        </td>
       <td>
-	     <div id="id5_4" ></div>
-      </td>
+	  <div id="id6_4" ></div>
+        </td>
       <td>
-	     <div id="id5_5"></div>
-       </td>
+	  <div id="id6_5"></div>
+         </td>
+		 <td>
+	  <div id="id6_6" ></div>
+        </td>
+      <td>
+	  <div id="id6_7"></div>
+        </td>
+      <td>
+	  <div id="id6_8" ></div>
+        </td>
+      <td>
+	  <div id="id6_9" ></div>
+        </td>
+      <td>
+	  <div id="id6_10"></div>
+         </td>
+    </tr>  <tr>
+      <td>
+	  <div id="id7_1" ></div>
+        </td>
+      <td>
+	  <div id="id7_2"></div>
+        </td>
+      <td>
+	  <div id="id7_3" ></div>
+        </td>
+      <td>
+	  <div id="id7_4" ></div>
+        </td>
+      <td>
+	  <div id="id7_5"></div>
+         </td>
+		       <td>
+	  <div id="id7_6" ></div>
+        </td>
+      <td>
+	  <div id="id7_7"></div>
+        </td>
+      <td>
+	  <div id="id7_8" ></div>
+        </td>
+      <td>
+	  <div id="id7_9" ></div>
+        </td>
+      <td>
+	  <div id="id7_10"></div>
+         </td>
     </tr>
-	
+	<tr>
+      <td>
+	  <div id="id8_1" ></div>
+        </td>
+      <td>
+	  <div id="id8_2"></div>
+        </td>
+      <td>
+	  <div id="id8_3" ></div>
+        </td>
+      <td>
+	  <div id="id8_4" ></div>
+        </td>
+      <td>
+	  <div id="id8_5"></div>
+         </td>
+		 <td>
+	  <div id="id8_6" ></div>
+        </td>
+      <td>
+	  <div id="id8_7"></div>
+        </td>
+      <td>
+	  <div id="id8_8" ></div>
+        </td>
+      <td>
+	  <div id="id8_9" ></div>
+        </td>
+      <td>
+	  <div id="id8_10"></div>
+         </td>
+    </tr>  <tr>
+      <td>
+	  <div id="id9_1" ></div>
+        </td>
+      <td>
+	  <div id="id9_2"></div>
+        </td>
+      <td>
+	  <div id="id9_3" ></div>
+        </td>
+      <td>
+	  <div id="id9_4" ></div>
+        </td>
+      <td>
+	  <div id="id9_5"></div>
+         </td>
+		       <td>
+	  <div id="id9_6" ></div>
+        </td>
+      <td>
+	  <div id="id9_7"></div>
+        </td>
+      <td>
+	  <div id="id9_8" ></div>
+        </td>
+      <td>
+	  <div id="id9_9" ></div>
+        </td>
+      <td>
+	  <div id="id9_10"></div>
+         </td>
+    </tr>
+	<tr>
+      <td>
+	  <div id="id10_1" ></div>
+        </td>
+      <td>
+	  <div id="id10_2"></div>
+        </td>
+      <td>
+	  <div id="id10_3" ></div>
+        </td>
+      <td>
+	  <div id="id10_4" ></div>
+        </td>
+      <td>
+	  <div id="id10_5"></div>
+         </td>
+		 <td>
+	  <div id="id10_6" ></div>
+        </td>
+      <td>
+	  <div id="id10_7"></div>
+        </td>
+      <td>
+	  <div id="id10_8" ></div>
+        </td>
+      <td>
+	  <div id="id10_9" ></div>
+        </td>
+      <td>
+	  <div id="id10_10"></div>
+         </td>
+    </tr>  <tr>
+      <td>
+	  <div id="id11_1" ></div>
+        </td>
+      <td>
+	  <div id="id11_2"></div>
+        </td>
+      <td>
+	  <div id="id11_3" ></div>
+        </td>
+      <td>
+	  <div id="id11_4" ></div>
+        </td>
+      <td>
+	  <div id="id11_5"></div>
+         </td>
+		       <td>
+	  <div id="id11_6" ></div>
+        </td>
+      <td>
+	  <div id="id11_7"></div>
+        </td>
+      <td>
+	  <div id="id11_8" ></div>
+        </td>
+      <td>
+	  <div id="id11_9" ></div>
+        </td>
+      <td>
+	  <div id="id11_10"></div>
+         </td>
+    </tr>
+	<tr>
+      <td>
+	  <div id="id12_1" ></div>
+        </td>
+      <td>
+	  <div id="id12_2"></div>
+        </td>
+      <td>
+	  <div id="id12_3" ></div>
+        </td>
+      <td>
+	  <div id="id12_4" ></div>
+        </td>
+      <td>
+	  <div id="id12_5"></div>
+         </td>
+		 <td>
+	  <div id="id12_6" ></div>
+        </td>
+      <td>
+	  <div id="id12_7"></div>
+        </td>
+      <td>
+	  <div id="id12_8" ></div>
+        </td>
+      <td>
+	  <div id="id12_9" ></div>
+        </td>
+      <td>
+	  <div id="id12_10"></div>
+         </td>
+    </tr>  <tr>
+      <td>
+	  <div id="id13_1" ></div>
+        </td>
+      <td>
+	  <div id="id13_2"></div>
+        </td>
+      <td>
+	  <div id="id13_3" ></div>
+        </td>
+      <td>
+	  <div id="id13_4" ></div>
+        </td>
+      <td>
+	  <div id="id13_5"></div>
+         </td>
+		       <td>
+	  <div id="id13_6" ></div>
+        </td>
+      <td>
+	  <div id="id13_7"></div>
+        </td>
+      <td>
+	  <div id="id13_8" ></div>
+        </td>
+      <td>
+	  <div id="id13_9" ></div>
+        </td>
+      <td>
+	  <div id="id13_10"></div>
+         </td>
+    </tr>
+	<tr>
+      <td>
+	  <div id="id14_1" ></div>
+        </td>
+      <td>
+	  <div id="id14_2"></div>
+        </td>
+      <td>
+	  <div id="id14_3" ></div>
+        </td>
+      <td>
+	  <div id="id14_4" ></div>
+        </td>
+      <td>
+	  <div id="id14_5"></div>
+         </td>
+		 <td>
+	  <div id="id14_6" ></div>
+        </td>
+      <td>
+	  <div id="id14_7"></div>
+        </td>
+      <td>
+	  <div id="id14_8" ></div>
+        </td>
+      <td>
+	  <div id="id14_9" ></div>
+        </td>
+      <td>
+	  <div id="id14_10"></div>
+         </td>
+    </tr>  <tr>
+      <td>
+	  <div id="id15_1" ></div>
+        </td>
+      <td>
+	  <div id="id15_2"></div>
+        </td>
+      <td>
+	  <div id="id15_3" ></div>
+        </td>
+      <td>
+	  <div id="id15_4" ></div>
+        </td>
+      <td>
+	  <div id="id15_5"></div>
+         </td>
+		       <td>
+	  <div id="id15_6" ></div>
+        </td>
+      <td>
+	  <div id="id15_7"></div>
+        </td>
+      <td>
+	  <div id="id15_8" ></div>
+        </td>
+      <td>
+	  <div id="id15_9" ></div>
+        </td>
+      <td>
+	  <div id="id15_10"></div>
+         </td>
+    </tr>
+	<tr>
+      <td>
+	  <div id="id16_1" ></div>
+        </td>
+      <td>
+	  <div id="id16_2"></div>
+        </td>
+      <td>
+	  <div id="id16_3" ></div>
+        </td>
+      <td>
+	  <div id="id16_4" ></div>
+        </td>
+      <td>
+	  <div id="id16_5"></div>
+         </td>
+		 <td>
+	  <div id="id16_6" ></div>
+        </td>
+      <td>
+	  <div id="id16_7"></div>
+        </td>
+      <td>
+	  <div id="id16_8" ></div>
+        </td>
+      <td>
+	  <div id="id16_9" ></div>
+        </td>
+      <td>
+	  <div id="id16_10"></div>
+         </td>
+    </tr>  <tr>
+      <td>
+	  <div id="id17_1" ></div>
+        </td>
+      <td>
+	  <div id="id17_2"></div>
+        </td>
+      <td>
+	  <div id="id17_3" ></div>
+        </td>
+      <td>
+	  <div id="id17_4" ></div>
+        </td>
+      <td>
+	  <div id="id17_5"></div>
+         </td>
+		       <td>
+	  <div id="id17_6" ></div>
+        </td>
+      <td>
+	  <div id="id17_7"></div>
+        </td>
+      <td>
+	  <div id="id17_8" ></div>
+        </td>
+      <td>
+	  <div id="id17_9" ></div>
+        </td>
+      <td>
+	  <div id="id17_10"></div>
+         </td>
+    </tr>
+	<tr>
+      <td>
+	  <div id="id18_1" ></div>
+        </td>
+      <td>
+	  <div id="id18_2"></div>
+        </td>
+      <td>
+	  <div id="id18_3" ></div>
+        </td>
+      <td>
+	  <div id="id18_4" ></div>
+        </td>
+      <td>
+	  <div id="id18_5"></div>
+         </td>
+		 <td>
+	  <div id="id18_6" ></div>
+        </td>
+      <td>
+	  <div id="id18_7"></div>
+        </td>
+      <td>
+	  <div id="id18_8" ></div>
+        </td>
+      <td>
+	  <div id="id18_9" ></div>
+        </td>
+      <td>
+	  <div id="id18_10"></div>
+         </td>
+    </tr>
+<tr>
+      <td>
+	  <div id="id19_1" ></div>
+        </td>
+      <td>
+	  <div id="id19_2"></div>
+        </td>
+      <td>
+	  <div id="id19_3" ></div>
+        </td>
+      <td>
+	  <div id="id19_4" ></div>
+        </td>
+      <td>
+	  <div id="id19_5"></div>
+         </td>
+		       <td>
+	  <div id="id19_6" ></div>
+        </td>
+      <td>
+	  <div id="id19_7"></div>
+        </td>
+      <td>
+	  <div id="id19_8" ></div>
+        </td>
+      <td>
+	  <div id="id19_9" ></div>
+        </td>
+      <td>
+	  <div id="id19_10"></div>
+         </td>
+    </tr>
+<tr>
+      <td>
+	  <div id="id20_1" ></div>
+        </td>
+      <td>
+	  <div id="id20_2"></div>
+        </td>
+      <td>
+	  <div id="id20_3" ></div>
+        </td>
+      <td>
+	  <div id="id20_4" ></div>
+        </td>
+      <td>
+	  <div id="id20_5"></div>
+         </td>
+		       <td>
+	  <div id="id20_6" ></div>
+        </td>
+      <td>
+	  <div id="id20_7"></div>
+        </td>
+      <td>
+	  <div id="id20_8" ></div>
+        </td>
+      <td>
+	  <div id="id20_9" ></div>
+        </td>
+      <td>
+	  <div id="id20_10"></div>
+         </td>
+    </tr>
 
 </table>
 <table>
